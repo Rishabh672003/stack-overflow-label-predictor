@@ -21,7 +21,7 @@ templates = Jinja2Templates(directory="templates")
 
 
 @app.post("/submit", response_class=HTMLResponse)
-async def submit(request: Request, text: str = Form("default")):
+async def submit(request: Request, text: str = Form(...)):
     # Process the input text
     processed_text = predictor(text)
     return templates.TemplateResponse(
