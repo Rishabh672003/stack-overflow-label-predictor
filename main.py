@@ -72,7 +72,3 @@ def predictor(input):
     answers = loaded_model.predict(examples)
     label = np.argmax(answers)
     return labels[label]
-
-
-if __name__ == "__main__":
-    uvicorn.run(app, host="localhost", port=8082)
