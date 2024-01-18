@@ -25,7 +25,8 @@ async def submit(request: Request, text: str = Form(...)):
     # Process the input text
     processed_text = predictor(text)
     return templates.TemplateResponse(
-        "index.html", {"request": request, "processed_text": processed_text}
+        "index.html",
+        {"request": request, "processed_text": processed_text, "text": text},
     )
 
 
@@ -66,7 +67,7 @@ loaded_model = tf.keras.models.load_model(
 
 
 def predictor(input):
-    labels = ["Csharp", "Java", "Python"]
+    labels = ["Csharp", "Java", "Javascript", "Python"]
     examples = [input]
 
     answers = loaded_model.predict(examples)
