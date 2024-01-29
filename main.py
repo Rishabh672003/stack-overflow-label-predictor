@@ -1,53 +1,9 @@
-from fastapi import FastAPI, Request, Form
-from fastapi.responses import HTMLResponse
-from fastapi.templating import Jinja2Templates
-import uvicorn
-import re
-import os
-import re
-import shutil
-import string
-import tensorflow as tf
-import numpy as np
-
-import numpy as np
-import tensorflow as tf
-
+import streamlit as st
 from pydantic import BaseModel
-
-app = FastAPI()
-
-templates = Jinja2Templates(directory="templates")
-
-
-@app.post("/submit", response_class=HTMLResponse)
-async def submit(request: Request, text: str = Form(...)):
-    # Process the input text
-    processed_text = predictor(text)
-    return templates.TemplateResponse(
-        "index.html",
-        {"request": request, "processed_text": processed_text, "text": text},
-    )
-
-
-@app.get("/", response_class=HTMLResponse)
-async def index(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
-
-
-class TextInput(BaseModel):
-    text: str
-
-
-@app.post("/echo")
-async def echo(input: TextInput):
-    print(input)
-    return {"text": input.text}
-
-
-@app.get("/ping")
-async def ping():
-    return "Server Up and running"
+import numpy as np
+import tensorflow as tf
+import re
+import string
 
 
 # Define the custom standardization function
@@ -66,6 +22,11 @@ loaded_model = tf.keras.models.load_model(
 )
 
 
+class TextInput(BaseModel):
+    text: str
+
+
+@st.cache_data
 def predictor(input):
     labels = ["Csharp", "Java", "Javascript", "Python"]
     examples = [input]
@@ -75,5 +36,8 @@ def predictor(input):
     return labels[label]
 
 
-if __name__ == "__main__":
-    uvicorn.run(app, host="localhost", port=8080)
+st.title("Text Predictor")
+text_input = st.text_input("Enter your text here:")
+if st.button("Submit"):
+    processed_text = predictor(text_input)
+    st.write("Processed Text: ", processed_text)
