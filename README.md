@@ -5,7 +5,7 @@ A simple NLP model that predicts the language of the question user has asked, Th
 before this was written with FastAPI and Jinja templates (see in `src/fastapi.py`)
 
 But for deployement I switched to **Streamlit** 
-Now the Website is deployed here - 
+Now the Website is deployed here - https://stack-overflow-label-predictor-rishabh.streamlit.app/
 
 Now models only works for following language:
 - Csharp
