@@ -17,7 +17,7 @@ def custom_standardization(input_data):
 
 # Load the model with the custom standardization function
 loaded_model = tf.keras.models.load_model(
-    "./NLP-model",
+    "./models/NLP-model",
     custom_objects={"custom_standardization": custom_standardization},
 )
 

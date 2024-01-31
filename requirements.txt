@@ -7,3 +7,4 @@ pillow
 opencv-contrib-python
 python-multipart
 jinja2
+streamlit

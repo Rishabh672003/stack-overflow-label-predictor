@@ -10,9 +10,6 @@ import string
 import tensorflow as tf
 import numpy as np
 
-import numpy as np
-import tensorflow as tf
-
 from pydantic import BaseModel
 
 app = FastAPI()
