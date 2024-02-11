@@ -37,7 +37,7 @@ def predictor(input):
 
 
 st.title("Text Predictor")
-text_input = st.text_input("Enter the Question:")
+text_input = st.text_area("Enter your question here:", height=150)
 if st.button("Submit"):
     processed_text = predictor(text_input)
     st.write("Model predicted the question is for following language:", processed_text)
