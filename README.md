@@ -30,4 +30,4 @@ Now models only works for following language:
 
 # Preview of the website
 
-![image](https://github.com/Rishabh672003/stack-overflow-label-predictor/assets/53911515/1f8c91df-3f5d-44f4-9789-ec3bd0d205a9)
+![image](https://github.com/Rishabh672003/stack-overflow-label-predictor/assets/53911515/bee10c11-61dd-4c4a-a837-28ae2f811e43)
