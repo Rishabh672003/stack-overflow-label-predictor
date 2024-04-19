@@ -1,7 +1,7 @@
 fastapi
 uvicorn
 numpy
-tensorflow
+tensorflow==2.16.1
 Python-IO
 pillow
 opencv-contrib-python

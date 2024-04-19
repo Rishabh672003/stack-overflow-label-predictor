@@ -2,7 +2,7 @@
 
 A simple NLP model that predicts the language of the question user has asked, The model has been trained on stack-overflow dataset which has 16,000 questions from 4 languages and the language the question its labelled for, See the Jupyter Notebook in the notebooks directory for more information and see the implementation of the model.
 
-before this was written with FastAPI and Jinja templates (see in `src/fastapi.py`)
+Before this was written with FastAPI and Jinja templates (see in `src/fastapi.py`)
 
 But for deployement I switched to **Streamlit** 
 Now the Website is deployed here - https://stack-overflow-label-predictor-rishabh.streamlit.app/
