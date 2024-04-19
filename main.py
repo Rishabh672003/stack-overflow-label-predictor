@@ -4,6 +4,8 @@ import numpy as np
 import tensorflow as tf
 import re
 import string
+from tensorflow import keras
+from tensorflow.keras import layers
 
 
 # Define the custom standardization function
@@ -14,12 +16,14 @@ def custom_standardization(input_data):
         stripped_html, "[%s]" % re.escape(string.punctuation), ""
     )
 
+vectorize_layer = layers.TextVectorization(
+    standardize=custom_standardization,
+    max_tokens=3000,
+    output_mode='int',
+    output_sequence_length=300)
 
 # Load the model with the custom standardization function
-loaded_model = tf.keras.models.load_model(
-    "./models/NLP-model",
-    custom_objects={"custom_standardization": custom_standardization},
-)
+loaded_model = keras.models.load_model('./notebooks/NLP-model.keras')
 
 
 class TextInput(BaseModel):
@@ -29,8 +33,8 @@ class TextInput(BaseModel):
 @st.cache_data
 def predictor(input):
     labels = ["Csharp", "Java", "Javascript", "Python"]
-    examples = [input]
-
+    examples = input
+    examples = vectorize_layer(examples)
     answers = loaded_model.predict(examples)
     label = np.argmax(answers)
     return labels[label]
